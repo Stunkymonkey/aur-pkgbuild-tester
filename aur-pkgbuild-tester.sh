@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 DATADIR=$(readlink -f $1)
-TESTER=$(readlink -f scripts/default.sh)
+TESTER=$(readlink -f scripts/default-noop-tester.sh)
 if [ ! -z "$2" ]; then
     TESTER=$(readlink -f $2)
 fi
