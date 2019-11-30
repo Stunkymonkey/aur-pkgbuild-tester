@@ -18,5 +18,5 @@ docker run --rm -it \
     -v "$DATADIR/:/opt/pkgdir" \
     -v "$TESTER:/opt/test.sh" \
     -v "$(pwd)/scripts:/opt/scripts" \
-    base/archlinux \
+    archlinux/base \
     /opt/scripts/entrypoint.sh
