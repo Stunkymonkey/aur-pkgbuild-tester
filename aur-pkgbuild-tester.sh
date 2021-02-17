@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 set -e
 DATADIR=$(readlink -f $1)
 TESTER=$(readlink -f scripts/default-noop-tester.sh)
@@ -18,5 +18,5 @@ docker run --rm -it \
     -v "$DATADIR/:/opt/pkgdir" \
     -v "$TESTER:/opt/test.sh" \
     -v "$(pwd)/scripts:/opt/scripts" \
-    archlinux/base \
+    archlinux:base-devel \
     /opt/scripts/entrypoint.sh
