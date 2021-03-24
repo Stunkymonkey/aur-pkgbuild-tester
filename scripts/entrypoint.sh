@@ -4,6 +4,9 @@ set -e
 useradd -m -g wheel -s /bin/sh tester
 echo "tester ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
 chown -R tester:wheel /opt/pkgdir
+# remove old package files
+cd /opt/pkgdir
+rm -f *.tar.zst
 # Install makepkg deps
 pacman -Sy git --noconfirm
 # install yay
