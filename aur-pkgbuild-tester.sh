@@ -14,6 +14,7 @@ if [ -d "$TESTER" ]; then
     echo "Second argument must not be a directory"
     exit 1
 fi
+docker pull archlinux:base-devel
 docker run --rm -it \
     -v "$DATADIR/:/opt/pkgdir" \
     -v "$TESTER:/opt/test.sh" \
