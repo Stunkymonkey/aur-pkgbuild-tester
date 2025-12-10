@@ -1,6 +1,8 @@
 #!/bin/bash
 set -e
 cd /opt/pkgdir
-DEPS=$(cat PKGBUILD | grep depends | awk -F'[()]' '{print $2}' | sed 's/:.*"/"/' | tr '\n' ' ' | tr -d "'" | tr -d '"')
+DEPS=$(sed -n '/^depends=/{:a; n; /)/q; p; ba}' PKGBUILD \
+    | tr -d '"'\''"' \
+    | tr '\n' ' ')
 yay -S $DEPS --noconfirm --overwrite '*'
 
