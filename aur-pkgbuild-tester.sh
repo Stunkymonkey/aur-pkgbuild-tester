@@ -28,3 +28,7 @@ podman run --rm "${TTY_ARGS[@]}" \
     -v "$SCRIPTDIR/scripts:/opt/scripts:ro,z" \
     docker.io/library/archlinux:base-devel \
     /opt/scripts/entrypoint.sh
+# Remove build artifacts (all git-ignored files) after a successful run
+if [ -z "$KEEP_BUILD" ] && git -C "$DATADIR" rev-parse --is-inside-work-tree >/dev/null 2>&1; then
+    git -C "$DATADIR" clean -ffdX
+fi

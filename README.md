@@ -30,6 +30,8 @@ Three stages:
 2. The [PKGBUILD](https://wiki.archlinux.org/index.php/PKGBUILD) is built **inside the container**
 3. If specified, the tester script is run inside the container
 
+If everything succeeds and the package directory is a git repository, all git-ignored files (sources, `src/`, `pkg/`, built packages) are removed afterwards with `git clean -ffdX`. Set `KEEP_BUILD=1` to keep them.
+
 
 To spawn a minimal ArchLinux installation the script uses the archlinux:base-devel image (which is updated daily) and non-interactively installs the required packages to build the package (`sudo`, `binutils`, `fakeroot`).
 
